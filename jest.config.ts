@@ -3,13 +3,17 @@
  * https://jestjs.io/docs/configuration
  */
 
-export default {
+module.exports = {
+    displayName: 'Tests Typescript Application - AWS SAM',
     transform: {
         '^.+\\.ts?$': 'ts-jest',
     },
+    moduleDirectories: ['node_modules', 'src'],
+    testMatch: ['**/tests/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
+    preset: 'ts-jest',
+    testEnvironment: 'node',
     clearMocks: true,
     collectCoverage: true,
     coverageDirectory: 'coverage',
     coverageProvider: 'v8',
-    testMatch: ['**/tests/unit/*.test.ts'],
 };
