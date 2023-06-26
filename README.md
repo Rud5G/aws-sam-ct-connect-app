@@ -4,7 +4,7 @@ This project contains source code and supporting files for a serverless applicat
 
 - src - Code for the application's Lambda function written in TypeScript.
 - events - Invocation events that you can use to invoke the function.
-- src/tests - Unit tests for the application code.
+- tests - Unit tests for the application code.
 - template.yaml - A template that defines the application's AWS resources.
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
@@ -96,9 +96,8 @@ You can find more information and examples about filtering Lambda function logs 
 Tests are defined in the `src/tests` folder in this project. Use NPM to install the [Jest test framework](https://jestjs.io/) and run unit tests.
 
 ```shell
-    cd src
-    npm install
-    npm run test
+    yarn install
+    yarn test
 ```
 
 ## Cleanup

@@ -2,8 +2,10 @@
 
 /.idea
 /.env
-/build
 /.aws-sam/
+
+/build
+/coverage/
 
 # YARN (do not edit)
 

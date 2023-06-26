@@ -2704,6 +2704,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "hello_world@workspace:."
   dependencies:
+    "@jest/globals": ^29.5.0
     "@tsconfig/node16": ^1.0.4
     "@types/aws-lambda": ^8.10.92
     "@types/jest": ^29.4.0
