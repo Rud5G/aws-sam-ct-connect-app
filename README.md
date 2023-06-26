@@ -4,12 +4,12 @@ This project contains source code and supporting files for a serverless applicat
 
 - src - Code for the application's Lambda function written in TypeScript.
 - events - Invocation events that you can use to invoke the function.
-- src/tests - Unit tests for the application code. 
+- src/tests - Unit tests for the application code.
 - template.yaml - A template that defines the application's AWS resources.
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
-If you prefer to use an integrated development environment (IDE) to build and test your application, you can use the AWS Toolkit.  
+If you prefer to use an integrated development environment (IDE) to build and test your application, you can use the AWS Toolkit.
 The AWS Toolkit is an open source plug-in for popular IDEs that uses the SAM CLI to build and deploy serverless applications on AWS. The AWS Toolkit also adds a simplified step-through debugging experience for Lambda function code. See the following links to get started.
 
 ## Deploy the application
@@ -24,9 +24,9 @@ To use the SAM CLI, you need the following tools.
 
 To build and deploy your application for the first time, run the following in your shell:
 
-```bash
-sam build
-sam deploy --guided
+```shell
+    sam build
+    sam deploy --guided
 ```
 
 The first command will build the source of your application. The second command will package and deploy your application to AWS, with a series of prompts:
@@ -34,7 +34,8 @@ The first command will build the source of your application. The second command 
 * **Stack Name**: The name of the stack to deploy to CloudFormation. This should be unique to your account and region, and a good starting point would be something matching your project name.
 * **AWS Region**: The AWS region you want to deploy your app to.
 * **Confirm changes before deploy**: If set to yes, any change sets will be shown to you before execution for manual review. If set to no, the AWS SAM CLI will automatically deploy application changes.
-* **Allow SAM CLI IAM role creation**: Many AWS SAM templates, including this example, create AWS IAM roles required for the AWS Lambda function(s) included to access AWS services. By default, these are scoped down to minimum required permissions. To deploy an AWS CloudFormation stack which creates or modifies IAM roles, the `CAPABILITY_IAM` value for `capabilities` must be provided. If permission isn't provided through this prompt, to deploy this example you must explicitly pass `--capabilities CAPABILITY_IAM` to the `sam deploy` command.
+* **Allow SAM CLI IAM role creation**: Many AWS SAM templates, including this example, create AWS IAM roles required for the AWS Lambda function(s) included to access AWS services. By default, these are scoped down to minimum required permissions.
+    To deploy an AWS CloudFormation stack which creates or modifies IAM roles, the `CAPABILITY_IAM` value for `capabilities` must be provided. If permission isn't provided through this prompt, to deploy this example you must explicitly pass `--capabilities CAPABILITY_IAM` to the `sam deploy` command.
 * **Save arguments to samconfig.toml**: If set to yes, your choices will be saved to a configuration file inside the project, so that in the future you can just re-run `sam deploy` without parameters to deploy changes to your application.
 
 You can find your API Gateway Endpoint URL in the output values displayed after deployment.
@@ -43,8 +44,8 @@ You can find your API Gateway Endpoint URL in the output values displayed after 
 
 Build your application with the `sam build` command.
 
-```bash
-aws-sam-ct-connect-app$ sam build
+```shell
+    sam build
 ```
 
 The SAM CLI installs dependencies defined in `src/package.json`, compiles TypeScript with esbuild, creates a deployment package, and saves it in the `.aws-sam/build` folder.
@@ -53,15 +54,15 @@ Test a single function by invoking it directly with a test event. An event is a 
 
 Run functions locally and invoke them with the `sam local invoke` command.
 
-```bash
-aws-sam-ct-connect-app$ sam local invoke HelloWorldFunction --event events/event.json
+```shell
+    sam local invoke HelloWorldFunction --event events/event.json
 ```
 
 The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
 
-```bash
-aws-sam-ct-connect-app$ sam local start-api
-aws-sam-ct-connect-app$ curl http://localhost:3000/
+```shell
+    sam local start-api
+    curl http://localhost:3000/
 ```
 
 The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
@@ -84,8 +85,8 @@ To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs`
 
 `NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
 
-```bash
-aws-sam-ct-connect-app$ sam logs -n HelloWorldFunction --stack-name aws-sam-ct-connect-app --tail
+```shell
+    sam logs -n HelloWorldFunction --stack-name aws-sam-ct-connect-app --tail
 ```
 
 You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
@@ -94,18 +95,18 @@ You can find more information and examples about filtering Lambda function logs 
 
 Tests are defined in the `src/tests` folder in this project. Use NPM to install the [Jest test framework](https://jestjs.io/) and run unit tests.
 
-```bash
-aws-sam-ct-connect-app$ cd src
-src$ npm install
-src$ npm run test
+```shell
+    cd src
+    npm install
+    npm run test
 ```
 
 ## Cleanup
 
 To delete the sample application that you created, use the AWS CLI. Assuming you used your project name for the stack name, you can run the following:
 
-```bash
-sam delete --stack-name aws-sam-ct-connect-app
+```shell
+    sam delete --stack-name aws-sam-ct-connect-app
 ```
 
 ## Resources
@@ -113,3 +114,6 @@ sam delete --stack-name aws-sam-ct-connect-app
 See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) for an introduction to SAM specification, the SAM CLI, and serverless application concepts.
 
 Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
+
+
+
